@@ -1,35 +1,92 @@
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #667eea, #764ba2);
-    text-align: center;
     margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #d7d2cc, #304352);
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* 전체 창 */
+.window {
+    width: 900px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* 상단 바 */
+.window-header {
+    height: 40px;
+    background: #f3f3f3;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    position: relative;
+}
+
+/* 빨노초 버튼 */
+.buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.buttons span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.red { background: #ff5f57; }
+.yellow { background: #ffbd2e; }
+.green { background: #28c840; }
+
+.title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* 내용 */
+.content {
     padding: 40px;
-    color: white;
+    text-align: center;
 }
 
 h1 {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
+/* 카드 그리드 */
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    max-width: 900px;
-    margin: auto;
 }
 
+/* 카드 */
 .card {
     background: white;
-    color: black;
     text-decoration: none;
-    padding: 30px;
-    border-radius: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    transition: 0.3s;
+    color: black;
+    padding: 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
 .card:hover {
     transform: translateY(-5px);
     background: #f3f3f3;
