@@ -4,7 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #d7d2cc, #304352);
+    background: url("macbook_background.jpg");
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
