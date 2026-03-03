@@ -1,109 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title> Jisoo's Daily Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Jisoo Daily Dashboard</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="window">
+<!-- ================= MAIN WINDOW ================= -->
 
+<div class="window">
     <div class="window-header">
         <div class="buttons">
             <span class="red"></span>
             <span class="yellow"></span>
             <span class="green"></span>
         </div>
-        <div class="title">Jisoo's Dashboard</div>
+        <div class="title">Jisoo Dashboard</div>
     </div>
 
     <div class="content">
+        <h1>📚 My Daily Dashboard</h1>
 
-        <!-- LEFT SIDE -->
-        <div class="main-area">
-
-            <h1>📚 My Daily Dashboard</h1>
-
-            <div class="container">
-                <a class="card" href="https://my.purdue.edu" target="_blank">🎓 MyPurdue</a>
-                <a class="card" href="https://brightspace.purdue.edu" target="_blank">📘 Brightspace</a>
-                <a class="card" href="https://docs.google.com/spreadsheets/d/11IV6jAOJHWAXL-6N2hKe9hIEz4IyvotcG4IwVOLGvEQ/edit?gid=0#gid=0" target="_blank">📅 HW Schedule</a>
-                <a class="card" href="https://docs.google.com/spreadsheets/d/1vIp7OUh85XX3-F8-CAP_wjHPy9CkYz9NjXz7WlTRtMI/edit?gid=0#gid=0" target="_blank">💼 Job Applications</a>
-            </div>
-
+        <div class="container">
+            <a class="card" href="https://my.purdue.edu" target="_blank">🎓 MyPurdue</a>
+            <a class="card" href="https://brightspace.purdue.edu" target="_blank">📘 Brightspace</a>
+            <a class="card" href="https://docs.google.com/spreadsheets/d/11IV6jAOJHWAXL-6N2hKe9hIEz4IyvotcG4IwVOLGvEQ/edit?gid=0#gid=0" target="_blank">📅 HW Schedule</a>
+            <a class="card" href="https://docs.google.com/spreadsheets/d/1vIp7OUh85XX3-F8-CAP_wjHPy9CkYz9NjXz7WlTRtMI/edit?gid=0#gid=0" target="_blank">💼 Job Applications</a>
         </div>
-
-        <!-- RIGHT SIDE WIDGETS -->
-        <div class="widget-panel">
-
-            <!-- WORLD CLOCK -->
-            <div class="widget">
-                <h3>⏰ World Clock</h3>
-
-                <div class="clock-item">
-                    🇺🇸 Indianapolis
-                    <div id="indy-time" class="time"></div>
-                </div>
-
-                <div class="clock-item">
-                    🇹🇷 Istanbul
-                    <div id="istanbul-time" class="time"></div>
-                </div>
-            </div>
-
-            <!-- WEATHER -->
-            <div class="widget">
-                <h3>🌤 Indianapolis Weather</h3>
-                <div id="weather">
-                    Loading...
-                </div>
-            </div>
-
-            <!-- SPOTIFY -->
-            <div class="widget">
-                <h3>🎵 Spotify</h3>
-                <iframe style="border-radius:12px"
-                    src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M"
-                    width="100%"
-                    height="152"
-                    frameBorder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-                </iframe>
-            </div>
-
-        </div>
-
     </div>
 </div>
 
-<!-- CLOCK SCRIPT -->
+<!-- ================= FLOATING WIDGETS ================= -->
+
+<div class="floating-widget" style="top:100px; right:80px;">
+    <h3>⏰ World Clock</h3>
+    <div>🇺🇸 Indianapolis</div>
+    <div id="indy-time" class="time"></div>
+    <br>
+    <div>🇹🇷 Istanbul</div>
+    <div id="istanbul-time" class="time"></div>
+</div>
+
+<div class="floating-widget" style="top:320px; right:80px;">
+    <h3>🌤 Indianapolis Weather</h3>
+    <div id="weather">Loading...</div>
+</div>
+
+<div class="floating-widget" style="bottom:150px; right:80px;">
+    <h3>🎵 Spotify</h3>
+    <iframe style="border-radius:12px"
+        src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M"
+        width="250"
+        height="152"
+        frameBorder="0"
+        allow="autoplay; clipboard-write; encrypted-media;">
+    </iframe>
+</div>
+
+<!-- ================= OPACITY SLIDER ================= -->
+
+<div class="opacity-control">
+    <input type="range" min="50" max="100" value="75" id="opacityControl">
+</div>
+
+<!-- ================= DOCK ================= -->
+
+<div class="dock">
+    <a href="https://my.purdue.edu" target="_blank">🎓</a>
+    <a href="https://brightspace.purdue.edu" target="_blank">📘</a>
+    <a href="https://mail.google.com" target="_blank">📧</a>
+    <a href="https://open.spotify.com" target="_blank">🎵</a>
+</div>
+
+<!-- ================= SCRIPT ================= -->
+
 <script>
 function updateClocks() {
     const now = new Date();
 
-    const indyOptions = {
-        timeZone: "America/Indiana/Indianapolis",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: true
-    };
-
-    const istanbulOptions = {
-        timeZone: "Europe/Istanbul",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: true
-    };
-
     document.getElementById("indy-time").innerText =
-        new Intl.DateTimeFormat("en-US", indyOptions).format(now);
+        new Intl.DateTimeFormat("en-US", {
+            timeZone: "America/Indiana/Indianapolis",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true
+        }).format(now);
 
     document.getElementById("istanbul-time").innerText =
-        new Intl.DateTimeFormat("en-US", istanbulOptions).format(now);
+        new Intl.DateTimeFormat("en-US", {
+            timeZone: "Europe/Istanbul",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true
+        }).format(now);
 }
 
 async function loadWeather() {
@@ -122,6 +115,47 @@ async function loadWeather() {
 setInterval(updateClocks, 1000);
 updateClocks();
 loadWeather();
+
+/* ===== DRAG FUNCTION ===== */
+
+document.querySelectorAll(".floating-widget").forEach(widget => {
+    widget.onmousedown = function(e) {
+        let shiftX = e.clientX - widget.getBoundingClientRect().left;
+        let shiftY = e.clientY - widget.getBoundingClientRect().top;
+
+        function moveAt(pageX, pageY) {
+            widget.style.left = pageX - shiftX + 'px';
+            widget.style.top = pageY - shiftY + 'px';
+            widget.style.right = "auto";
+            widget.style.bottom = "auto";
+        }
+
+        function onMouseMove(e) {
+            moveAt(e.pageX, e.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        document.onmouseup = function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            document.onmouseup = null;
+        };
+    };
+
+    widget.ondragstart = function() {
+        return false;
+    };
+});
+
+/* ===== OPACITY CONTROL ===== */
+
+const slider = document.getElementById("opacityControl");
+slider.addEventListener("input", function() {
+    document.querySelectorAll(".floating-widget").forEach(widget => {
+        widget.style.background =
+            `rgba(255,255,255,${this.value/100})`;
+    });
+});
 </script>
 
 </body>
