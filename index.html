@@ -116,18 +116,22 @@ setInterval(updateClocks, 1000);
 updateClocks();
 loadWeather();
 
-/* ===== DRAG FUNCTION ===== */
+/* ===== DRAG FUNCTION (widgets + window) ===== */
 
-document.querySelectorAll(".floating-widget").forEach(widget => {
-    widget.onmousedown = function(e) {
-        let shiftX = e.clientX - widget.getBoundingClientRect().left;
-        let shiftY = e.clientY - widget.getBoundingClientRect().top;
+function makeDraggable(element) {
+
+    element.onmousedown = function(e) {
+
+        // resize 핸들 잡은 경우 드래그 막기
+        if (e.target.closest(".resize-handle")) return;
+
+        let shiftX = e.clientX - element.getBoundingClientRect().left;
+        let shiftY = e.clientY - element.getBoundingClientRect().top;
 
         function moveAt(pageX, pageY) {
-            widget.style.left = pageX - shiftX + 'px';
-            widget.style.top = pageY - shiftY + 'px';
-            widget.style.right = "auto";
-            widget.style.bottom = "auto";
+            element.style.left = pageX - shiftX + 'px';
+            element.style.top = pageY - shiftY + 'px';
+            element.style.transform = "none";
         }
 
         function onMouseMove(e) {
@@ -142,10 +146,18 @@ document.querySelectorAll(".floating-widget").forEach(widget => {
         };
     };
 
-    widget.ondragstart = function() {
+    element.ondragstart = function() {
         return false;
     };
+}
+
+/* 위젯 적용 */
+document.querySelectorAll(".floating-widget").forEach(widget => {
+    makeDraggable(widget);
 });
+
+/* ⭐ window에도 적용 */
+makeDraggable(document.querySelector(".window"));
 
 /* ===== OPACITY CONTROL ===== */
 
