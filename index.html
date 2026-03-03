@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Jisoo's Daily Dashboard</title>
+    <title>❤️Jisoo's Daily Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -21,27 +21,52 @@
 
     <div class="content">
 
+        <div class="main-area">
+
         <h1>📚 My Daily Dashboard</h1>
 
         <div class="container">
-
-            <a class="card" href="https://my.purdue.edu" target="_blank">
-                🎓 MyPurdue
-            </a>
-
-            <a class="card" href="https://brightspace.purdue.edu" target="_blank">
-                📘 Brightspace
-            </a>
-
-            <a class="card" href="https://docs.google.com/spreadsheets/d/11IV6jAOJHWAXL-6N2hKe9hIEz4IyvotcG4IwVOLGvEQ/edit?gid=0#gid=0" target="_blank">
-                📅 HW Schedule
-            </a>
-
-            <a class="card" href="https://docs.google.com/spreadsheets/d/1vIp7OUh85XX3-F8-CAP_wjHPy9CkYz9NjXz7WlTRtMI/edit?gid=0#gid=0" target="_blank">
-                💼 Job Applications
-            </a>
-
+            <a class="card" href="https://my.purdue.edu" target="_blank">🎓 MyPurdue</a>
+            <a class="card" href="https://brightspace.purdue.edu" target="_blank">📘 Brightspace</a>
+            <a class="card" href="https://docs.google.com/spreadsheets/d/11IV6jAOJHWAXL-6N2hKe9hIEz4IyvotcG4IwVOLGvEQ/edit?gid=0#gid=0" target="_blank">📅 HW Schedule</a>
+            <a class="card" href="https://docs.google.com/spreadsheets/d/1vIp7OUh85XX3-F8-CAP_wjHPy9CkYz9NjXz7WlTRtMI/edit?gid=0#gid=0" target="_blank">💼 Job Applications</a>
         </div>
+
+    </div>
+
+    <div class="widget-panel">
+
+        <!-- 시간 위젯 -->
+        <div class="widget">
+            <h3>⏰ Time</h3>
+            <div id="clock"></div>
+        </div>
+
+        <!-- 날씨 위젯 -->
+        <div class="widget">
+            <h3>🌤 Weather</h3>
+            <iframe 
+                src="https://forecast7.com/en/39d77n86d16/indianapolis/?unit=us"
+                frameborder="0"
+                width="100%"
+                height="120">
+            </iframe>
+        </div>
+
+        <!-- Spotify 위젯 -->
+        <div class="widget">
+            <h3>🎵 Spotify</h3>
+            <iframe style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M"
+                width="100%"
+                height="152"
+                frameBorder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+            </iframe>
+        </div>
+
+    </div>
 
     </div>
 </div>
